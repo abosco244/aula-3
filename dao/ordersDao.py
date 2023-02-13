@@ -13,7 +13,17 @@ class OrdersDao:
         )
         rows = MySql.getResults()
         MySql.closeConnection()
-
+        result = []
+        
         for row in rows:
-            test = True
-            pass
+            result.append(
+                OrderModel(
+                    # orderNumber = 
+                    # orderDate: date
+                    # requiredDate: date
+                    # shippedDate: date | None = None
+                    # status: str
+                    # comments: str | None = None
+                    # customerNumber: int
+                )
+            )
