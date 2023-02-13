@@ -2,7 +2,6 @@ from dao.utility.db import MySql
 from models.order_details import*
 from utility.db import MySql
 
-
 class Order_details_modelDao:
 
     @classmethod
@@ -21,6 +20,8 @@ class Order_details_modelDao:
         except Exception as ex:
             return {"esito": "KO",
                     "risultato": ex}
+        finally:
+            MySql.closeConnection()
 
 
 
