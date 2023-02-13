@@ -15,4 +15,5 @@ class OrdersDao:
         MySql.closeConnection()
 
         for row in rows:
+            test = True
             pass
