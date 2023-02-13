@@ -25,5 +25,3 @@ class officesDao:
         except Exception as er:
             print(er)
 
-
-
