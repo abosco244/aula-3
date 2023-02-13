@@ -5,7 +5,6 @@ from dao.customersDao import CustomersDao
 from dao.EmployeeDao import EmployeeDao
 from dao.officesDao import OfficesDao
 from dao.orderDetailDao import OrderDetailsDao
-from dao.RispostaModel import Risposta
 
 '''
 MySql.openConnection()
@@ -18,35 +17,20 @@ app = FastAPI()
 
 @app.get("/get-customer/{customer_number}")
 async def get_customer(customer_number: int):
-    if CustomersDao().getCustomerByCustomerNumber(customer_number):
-        return Risposta(risultato=CustomersDao().getCustomerByCustomerNumber(customer_number), esito="OK")
-    else:
-        return Risposta(risultato=None, esito="KO")
+    return CustomersDao().getCustomerByCustomerNumber(customer_number)
 
 @app.get("/get-employee/{employee_number}")
 async def get_employee(employee_number: int):
-    if EmployeeDao().getEmployeeByEmployeeNumber(employee_number):
-        return Risposta(risultato=EmployeeDao().getEmployeeByEmployeeNumber(employee_number), esito="OK")
-    else:
-        return Risposta(risultato=None, esito="KO")
+    return EmployeeDao().getEmployeeByEmployeeNumber(employee_number)
 
 @app.get("/get-office/{office_code}")
 async def get_office(office_code: str):
-    if OfficesDao().getOfficeByOfficeCode(office_code):
-        return Risposta(risultato=OfficesDao().getOfficeByOfficeCode(office_code), esito="OK")
-    else:
-        return Risposta(risultato=None, esito="KO")
+    return OfficesDao().getOfficeByOfficeCode(office_code)
 
 @app.get("/get-orderdetails-by-status/{order_status}")
 async def get_orderdetails_by_status(order_status: str):
-    if OrderDetailsDao().getAllOrdersDetailsByStatus(order_status):
-        return Risposta(risultato=OrderDetailsDao().getAllOrdersDetailsByStatus(order_status), esito="OK")
-    else:
-        return Risposta(risultato=None, esito="KO")
+    return OrderDetailsDao().getAllOrdersDetailsByStatus(order_status)
     
 @app.get("/get-products-by-name/{productName}")
 async def getProductsByName(productName: str):
-    if ProductsDao().getProductsByName(productName):
-        return Risposta(risultato=ProductsDao().getProductsByName(productName), esito="OK")
-    else:
-        return Risposta(risultato=None, esito="KO")
+    return ProductsDao().getProductsByName(productName)

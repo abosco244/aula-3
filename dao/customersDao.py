@@ -1,5 +1,6 @@
 from dao.utility.db import MySql
 from models.customer import *
+from dao.RispostaModel import *
 
 class CustomersDao:
 
@@ -9,9 +10,9 @@ class CustomersDao:
             MySql.openConnection()
             MySql.query(f"SELECT * FROM Customers WHERE customerNumber = {customer_number}")
             data = MySql.getResults()  
-            output = list()
+            customer = list()
             for el in data:
-                output = (customer(customerNumber = el[0], 
+                customer = (CustomerModel(customerNumber = el[0], 
                                         customerName = el[1], 
                                         contactLastName=  el[2], 
                                         contactFirstName = el[3],
@@ -25,7 +26,14 @@ class CustomersDao:
                                         salesRepEmployeeNumber = el[11],
                                         creditLimit = el[12]
                 ))
-            MySql.closeConnection()
+            return Risposta(
+                risultato = customer,
+                esito = 'OK'
+            )
         except Exception as error:
-            print(error)
-        return output
+            return Risposta(
+                risultato = error,
+                esito = 'KO'
+            )
+        finally:
+            MySql.closeConnection()
