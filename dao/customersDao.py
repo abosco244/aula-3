@@ -29,4 +29,3 @@ class CustomersDao:
         except Exception as error:
             print(error)
         return output
-        
