@@ -1,5 +1,5 @@
 from dao.utility.db import MySql
-from customerModel import *
+from models.customer import *
 
 class CustomersDao:
 
@@ -11,7 +11,7 @@ class CustomersDao:
             data = MySql.getResults()  
             output = list()
             for el in data:
-                output = (CustomerModel(customerNumber = el[0], 
+                output = (customer(customerNumber = el[0], 
                                         customerName = el[1], 
                                         contactLastName=  el[2], 
                                         contactFirstName = el[3],
@@ -26,7 +26,7 @@ class CustomersDao:
                                         creditLimit = el[12]
                 ))
             MySql.closeConnection()
-            return output
         except Exception as error:
             print(error)
+        return output
         
