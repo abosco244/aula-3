@@ -1,6 +1,6 @@
 {
     "user": "root",
-    "password": " ",
+    "password": "robert_pswDB",
     "database": "classicmodels",
     "host": "localhost",
     "port": "3306"
