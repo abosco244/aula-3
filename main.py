@@ -1,4 +1,3 @@
-from dao.utility.db import MySql
 from fastapi import FastAPI
 from dao.officesDao import officesDao
 from models.office import OfficeModel
@@ -20,6 +19,6 @@ async def get_orders(customer_number: int):
 async def get_all_orderdetails():
     return Order_details_modelDao.get_all_orderdetails()
 
-@app.get('/emplyees/{office_city}')
+@app.get('/employees/{office_city}')
 async def get_employees(office_city: str):
     return EmployeeDao.getEmployeesByCity(office_city)
