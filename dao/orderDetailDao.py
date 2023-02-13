@@ -1,6 +1,5 @@
 from dao.utility.db import MySql
-from models.order_details import*
-from utility.db import MySql
+from models.order_details import *
 
 class Order_details_modelDao:
 
@@ -22,9 +21,3 @@ class Order_details_modelDao:
                     "risultato": ex}
         finally:
             MySql.closeConnection()
-
-
-
-
-
-

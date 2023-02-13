@@ -1,4 +1,4 @@
-from dao.utility.db import MySql
+from utility.db import MySql
 from models.order import OrderModel
 
 class OrdersDao:
