@@ -8,7 +8,7 @@ class OfficesDao:
     def getOfficeByOfficeCode(cls, officeCode):
         try:
             MySql.openConnection()
-            MySql.query(f"SELECT * FROM ooffices WHERE officeCode = {officeCode}")
+            MySql.query(f"SELECT * FROM offices WHERE officeCode = {officeCode}")
             data = MySql.getResults()
             office = list()
             for el in data:
