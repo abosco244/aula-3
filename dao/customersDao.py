@@ -1,19 +1,39 @@
 from dao.utility.db import MySql
-from models.customer import CustomerModel
+from models.customer import *
+from dao.RispostaModel import *
 
 class CustomersDao:
-    
+
     @classmethod
-    def getAllCustomers(cls):
-        MySql.openConnection()
-        MySql.query("SELECT * FROM Customers")
-        data = MySql.getResults()
-        results = list()
-        for element in data:
-            results.append(CustomerModel(customerNumber = element[0], customerName = element[1], 
-                                    contactLastName = element[2],contactFirstName = element[3], 
-                                    phone = element[4], addressLine1 = element[5], addressLine2 = element[6],
-                                    city = element[7], state = element[8], postalCode = element[9],
-                                    country = element[10], salesRepEmployeeNumber = element[11], creditLimit = element[12]))
-        MySql.closeConnection()
-        return results
+    def getCustomerByCustomerNumber(cls, customer_number):
+        try:
+            MySql.openConnection()
+            MySql.query(f"SELECT * FROM Customers WHERE customerNumber = {customer_number}")
+            data = MySql.getResults()  
+            customer = list()
+            for el in data:
+                customer = (CustomerModel(customerNumber = el[0], 
+                                        customerName = el[1], 
+                                        contactLastName=  el[2], 
+                                        contactFirstName = el[3],
+                                        phone = el[4], 
+                                        addressLine1 = el[5], 
+                                        addressLine2=  el[6], 
+                                        city = el[7],
+                                        state = el[8], 
+                                        postalCode = el[9], 
+                                        country=  el[10], 
+                                        salesRepEmployeeNumber = el[11],
+                                        creditLimit = el[12]
+                ))
+            return Risposta(
+                risultato = customer,
+                esito = 'OK'
+            )
+        except Exception as error:
+            return Risposta(
+                risultato = error,
+                esito = 'KO'
+            )
+        finally:
+            MySql.closeConnection()

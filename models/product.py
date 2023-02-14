@@ -7,7 +7,7 @@ class ProductModel (BaseModel):
     productName: str 
     productVendor: str 
     productDescription: str 
-    quantityInStock: str 
+    quantityInStock: int 
     buyPrice: str 
     MSRP: str
-    firstInit: bool=True
+    firstInit: bool=True                   

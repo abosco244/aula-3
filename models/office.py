@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-
 class OfficeModel (BaseModel):
   officeCode : str 
   city : str
@@ -10,4 +9,3 @@ class OfficeModel (BaseModel):
   country : str
   postalCode : str
   territory : str
-
