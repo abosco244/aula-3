@@ -1,11 +1,11 @@
 from pydantic import BaseModel
 
 class EmployeeModel(BaseModel):
-    employee_number: int | None = None
-    last_name: str
-    first_name: str
+    employeeNumber: int | None = None
+    lastName: str
+    firstName: str
     extension: str
     email: str
-    office_code: int
-    reports_to: int | None = None
-    job_title: str
+    officeCode: int
+    reportsTo: int | None = None
+    jobTitle: str
