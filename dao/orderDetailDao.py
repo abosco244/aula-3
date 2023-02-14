@@ -1,5 +1,5 @@
 from dao.utility.db import MySql
-from models.order_details import *
+from models.order_details import Order_details_model
 from dao.RispostaModel import *
 
 class OrderDetailsDao():
@@ -15,8 +15,8 @@ class OrderDetailsDao():
             data =  MySql.getResults()
             orderdetails_list = list()        
             for item in data:
-                orderdetail = Order_detail_model(order_number= item[0], product_code = item[1], quantity_ordered = item[2], 
-                                               price_each = item[3], order_line_number = item[4])
+                orderdetail = Order_details_model(orderNumber= item[0], productCode = item[1], quantityOrdered = item[2], 
+                                               priceEach = item[3], orderLineNumber = item[4])
                 orderdetails_list.append(orderdetail)
             return Risposta(
                 risultato = {"orderdetails": orderdetails_list},
