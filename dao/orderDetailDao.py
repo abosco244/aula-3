@@ -15,7 +15,7 @@ class OrderDetailsDao():
             data =  MySql.getResults()
             orderdetails_list = list()        
             for item in data:
-                orderdetail = Order_details_model(order_number= item[0], product_code = item[1], quantity_ordered = item[2], 
+                orderdetail = Order_detail_model(order_number= item[0], product_code = item[1], quantity_ordered = item[2], 
                                                price_each = item[3], order_line_number = item[4])
                 orderdetails_list.append(orderdetail)
             return Risposta(
