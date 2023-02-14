@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 class OfficeModel(BaseModel):
-    office_code: int | None = None
+    office_code: str | None = None
     city: str
     phone: str
     address_line_1: str
