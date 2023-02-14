@@ -11,7 +11,7 @@ class EmployeeDao:
                 f'''SELECT *
                 FROM employees e
                 JOIN offices o ON o.officeCode = e.officeCode
-                WHERE o.city = {office_city}'''
+                WHERE o.city = \'{office_city}\''''
             )
             data = MySql.getResults()
             results = list()
